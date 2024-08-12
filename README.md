@@ -24,28 +24,23 @@ Para rodar este projeto, você precisará de:
     Maven para gerenciamento de dependências
     Spring Boot para execução do aplicativo
 
-nstalação
+Instalação
 
-    Clone o repositório:
+ 1- Clone o repositório:
+ 
+ git clone git@github.com:matheusdevelloper/GestaoDePedidos.git
 
-    bash
+ 2-Navegue até o diretório do projeto:
+ 
+ cd repositorio
 
-git clone https://github.com/seu-usuario/seu-repositorio.git
+ 3-Compile e execute o projeto:
+ 
+ mvn spring-boot:run
 
-Navegue até o diretório do projeto:
+ 4- Acesse a aplicação no navegador em http://localhost:8081
 
-bash
-
-cd seu-repositorio
-
-Compile e execute o projeto:
-
-bash
-
-    mvn spring-boot:run
-
-    Acesse a aplicação no navegador em http://localhost:8080.
-
-Contribuições
+ Contribuições
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir problemas (issues) ou enviar solicitações de pull (pull requests) com melhorias e correções.
+ 
