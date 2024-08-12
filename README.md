@@ -23,3 +23,29 @@ Para rodar este projeto, você precisará de:
     Java 11 ou superior
     Maven para gerenciamento de dependências
     Spring Boot para execução do aplicativo
+
+nstalação
+
+    Clone o repositório:
+
+    bash
+
+git clone https://github.com/seu-usuario/seu-repositorio.git
+
+Navegue até o diretório do projeto:
+
+bash
+
+cd seu-repositorio
+
+Compile e execute o projeto:
+
+bash
+
+    mvn spring-boot:run
+
+    Acesse a aplicação no navegador em http://localhost:8080.
+
+Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir problemas (issues) ou enviar solicitações de pull (pull requests) com melhorias e correções.
