@@ -1,0 +1,13 @@
+body.bg-image {
+    background: url('/images/fundo-profissional.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff; /* Ajusta a cor do texto para contraste */
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.7); /* Navbar com fundo semi-transparente para melhor legibilidade */
+}
+
+h1, p {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Sombra no texto para melhor contraste */
+}

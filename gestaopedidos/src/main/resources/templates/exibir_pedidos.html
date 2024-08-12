@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibir Pedidos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Lista de Pedidos</h2>
+    
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>CPF</th>
+                <th>Nome do Item</th>
+                <th>Quantidade</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pedido : ${pedidos}">
+                <td th:text="${pedido.nome}"></td>
+                <td th:text="${pedido.telefone}"></td>
+                <td th:text="${pedido.cpf}"></td>
+                <td th:text="${pedido.itemPedido.itemNome}"></td>
+                <td th:text="${pedido.itemPedido.quantidade}"></td>
+                <td>
+                    <!-- Botão para abrir o modal -->
+                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" th:data-target="'#editModal' + ${pedido.cpf}">
+                        Editar
+                    </button>
+                  
+                    <form th:action="@{/remover_pedido}" method="post" style="display:inline;">
+                        <input type="hidden" name="cpf" th:value="${pedido.cpf}" />
+                        <button type="submit" class="btn btn-danger btn-sm">Remover</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modais de Edição -->
+<div th:each="pedido : ${pedidos}">
+    <div class="modal fade" th:id="'editModal' + ${pedido.cpf}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Editar Pedido</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/editar_pedido}" method="post">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" class="form-control" id="nome" name="nome" th:value="${pedido.nome}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="text" class="form-control" id="telefone" name="telefone" th:value="${pedido.telefone}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cpf">CPF</label>
+                            <input type="text" class="form-control" id="cpf" name="cpf" th:value="${pedido.cpf}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemNome">Nome do Item</label>
+                            <input type="text" class="form-control" id="itemNome" name="itemNome" th:value="${pedido.itemPedido.itemNome}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantidade">Quantidade</label>
+                            <input type="number" class="form-control" id="quantidade" name="quantidade" th:value="${pedido.itemPedido.quantidade}" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
